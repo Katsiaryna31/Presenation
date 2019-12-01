@@ -1,0 +1,517 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section class="slide1" data-background-image="assets/TypeScript.jpg" >
+					<h1>TypeScript</h1>
+					<p style="color: #d19634;">JavaScript that scales</p>
+				</section>
+				<section class="slide2" data-background="#05334b">
+					<section class="slide2.1">
+							<h2>Intalling</h2>
+							<ul>
+								<li>Via npm (the Node.js package manager)</li>
+								<li>By installing TypeScript’s Visual Studio plugins</li>
+							</ul>
+					</section>
+					<section class="slide2.2" data-background="#05334b" data-markdown>
+							**For NPM users:**
+							```javascript
+							> npm install -g typescript
+							```
+					</section>
+					<section class="slide2.3" data-background="#05334b" data-markdown>
+							**Create index.ts**
+							```javascript
+							function greeter(person: string) {
+								return "Hello, " + person;
+							}
+							
+							let user = "Jane User";
+							
+							document.body.textContent = greeter(user);
+							```
+					</section>
+					<section class="slide2.4" data-background="#05334b" data-markdown>
+							**At the command line, run the TypeScript compiler:**
+							```javascript
+							tsc index.ts
+							```
+							*The result will be a file index.js*
+					</section>
+				</section>
+				<section class="slide3" data-background="#05334b">
+					<section class="slide3.1">
+						<h2>Basic data types of TypeScript:</h2>
+						<ul>
+							<li>Number Types</li>
+							<li>String Types</li>
+							<li>Boolean Types</li>
+							<li>Null Types</li>
+							<li>Undefined Types</li>
+							<li>Array Types</li>
+						</ul>
+					</section>
+					<section class="slide3.2" >
+						<p data-markdown>
+								**Number Types:**
+								```javascript
+								let decimalValue: number = 10;
+								```
+						</p>
+						<p class="fragment" data-fragment-index="1" data-markdown>
+								**String Types:**
+								```javascript
+								let firstName: string = "Kate";
+								```
+						</p>
+						<p class="fragment" data-fragment-index="2" data-markdown>
+								**Boolean Types:**
+								```javascript
+								let isPrimaryAccount: boolean = true;
+								```
+						</p>		
+					</section>
+					<section class="slide3.3">
+							<p data-markdown>
+								**Null Types:**
+								```javascript
+								let nullValue: null = null;
+								```
+							</p>
+							<p class="fragment" data-fragment-index="1" data-markdown>
+								**Underfined Types:**
+								```javascript
+								let undefinedValue: undefined = undefined;
+								```
+							</p>
+							<p class="fragment" data-fragment-index="2" data-markdown>
+								*Null and undefined use more common to define types*
+								```javascript
+								type SomeType = string | undefined | null;
+								```
+							</p>		
+					</section>
+					<section class="slide3.4">
+							<p data-markdown>
+								**Array Types:**
+								```javascript
+								let marks: number[] = [80, 85, 75];
+								```
+							</p>
+							<p class="fragment" data-fragment-index="2" data-markdown>
+								**Generic way to declare arrays:**
+							</p>
+							<p class="fragment" data-fragment-index="1" data-markdown>
+								```javascript
+								let marks: Array< number > = [80, 85, 75];
+								```
+							</p>
+					</section>
+				</section>
+				<section class="slide4" data-background="#05334b">
+					<section class="slide4.1">
+						<h2>Basic data types of TypeScript:</h2>
+						<ul>
+							<li>Tuple Types</li>
+							<li>Any Types</li>
+							<li>Void Types</li>
+							<li>Never Types</li>
+							<li>Enum Types</li>
+						</ul>
+					</section>
+					<section class="slide4.2" >
+						<p data-markdown>
+							**Tuple Types:**
+							```javascript
+								// correct
+								let person: [string, number] = ["Kate", 1990];
+							```
+						</p>
+						<p class="fragment" data-fragment-index="1" data-markdown>
+							```javascript
+								// error
+								let person: [string, number] = [1990, "Kate"];
+							```
+						</p>
+						<p class="fragment" data-fragment-index="2" data-markdown>
+							**Any Types:**
+							```javascript
+								let dynamicValue: any = "Kate Yakubouskaya";
+								dynamicValue = 1990;
+								dynamicValue = true;
+							```
+						</p>		
+					</section>
+					<section class="slide4.3" >
+						<p data-markdown>
+							**Void Types:**
+							```javascript
+								function showMessage(): void { 
+									console.log("Hello World");
+							}
+							```
+						</p>
+						<p class="fragment" data-fragment-index="2" data-markdown>
+							**Never Types:**
+							```javascript
+								function throwError(message: string): never {
+									throw new Error(message);
+								}
+							```
+						</p>		
+					</section>
+					<section class="slide4.4" >
+						<div>
+							<h3>Enum Types:</h3>
+							<p>Enums allow us to define a set of named constants</p>
+						</div>
+						<p class="fragment" data-fragment-index="1" data-markdown>
+							**Numeric enum:**
+							```javascript
+								enum Direction {
+									Up = 1,
+									Down,
+									Left,
+									Right,
+								}
+							```
+						</p>		
+					</section>
+					<section class="slide4.5" >
+							<div>
+								<h4>String enum:</h4>
+								<p>In a string enum, each member has to be constant-initialized with a string literal.</p>
+							</div>
+							<p class="fragment" data-fragment-index="1" data-markdown>
+								```javascript
+									enum Direction {
+										Up = "UP",
+										Down = "DOWN",
+										Left = "LEFT",
+										Right = "RIGHT",
+									}
+								```
+							</p>		
+						</section>
+				</section>
+				<section class="slide5" data-background="#05334b">
+						<section class="slide5.1">
+							<div>
+								<h2>Interfaces</h2>
+							</div>
+							
+								<p class="fragment" data-fragment-index="1" data-markdown>
+									```javascript
+									interface Client {
+										id:string
+										age: number
+										name: {
+											firstName: string
+											secondName: string
+										}
+									}
+									```
+								</p>
+								<p class="fragment" data-fragment-index="2" data-markdown>
+									```javascript
+									const client1: Client = {
+										id: '23456',
+										age: 29,
+										name: {
+											firstName: Kate,
+											secondName: Yakubouskaya
+										}
+									}
+									```
+								</p>
+							
+							
+						</section>
+						<section class="slide5.2">
+								<div>
+									<h3>Optional Properties</h3>
+								</div>
+								<p class="fragment" data-fragment-index="1" data-markdown>
+										```javascript
+										interface Client {
+											id:string
+											age?: number
+											name: {
+												firstName: string
+												secondName: string
+											}
+										}
+										```
+								</p>
+								<p class="fragment" data-fragment-index="2" data-markdown>
+										```javascript
+										const client1: Client = {
+											id: '23456',
+											name: {
+												firstName: Kate,
+												secondName: Yakubouskaya
+											}
+										}
+										client1.age = 29 // correct
+										```
+								</p>
+						</section>
+						<section class="slide5.3">
+								<div>
+									<h3>Readonly Properties</h3>
+								</div>
+								<p class="fragment" data-fragment-index="1" data-markdown>
+										```javascript
+										interface Client {
+											readonly id:string
+											age?: number
+											name: {
+												firstName: string
+												secondName: string
+											}
+										}
+										```
+								</p>
+								<p class="fragment" data-fragment-index="2" data-markdown>
+										```javascript
+										const client1: Client = {
+											id: '23456',
+											name: {
+												firstName: Kate,
+												secondName: Yakubouskaya
+											}
+										}
+										client1.id = '0123' // error
+										```
+								</p>	
+						</section>
+						<section class="slide5.4">
+								<p data-markdown>
+										```javascript
+										const css: Styles = {
+											border: '1px solid black',
+											margin: '20px',
+											border-radius: '15px'
+										}
+										```
+								</p>
+								<p class="fragment" data-fragment-index="1" data-markdown>
+										```javascript
+										interface Styles {
+											[key: string] : string
+										}
+										```
+								</p>
+						</section>
+				</section>
+				<section class="slide6" data-background="#05334b">
+					<section class="slide6.1">
+						<div>
+							<h2>Functions</h2>
+						</div>
+						<p class="fragment" data-fragment-index="1" data-markdown>
+							**Typing the function**
+							```javascript
+							function add(x: number, y: number): number {
+								return x + y;
+							}
+							
+							let myAdd = function(x: number, y: number): number { return x + y}
+							```
+						</p>
+					</section>
+					<section class="slide6.2">
+						<div>
+							<h3>Default Parameters</h3>
+						</div>
+						<p class="fragment" data-fragment-index="1" data-markdown>
+							```javascript
+								function buildName(firstName: string, lastName: string) {
+									return firstName + " " + lastName;
+								}
+							```
+						</p>
+						<p class="fragment" data-fragment-index="2" data-markdown>
+							```javascript
+							let result1 = buildName("Bob");               // error
+							let result2 = buildName("Bob", "Ady", "Sr."); // error
+							let result3 = buildName("Bob", "Ady");      // ah, just right
+							```
+						</p>
+					</section>
+					<section class="slide6.3">
+						<div>
+								<h3>Optional Parameters</h3>
+							</div>
+							<p class="fragment" data-fragment-index="1" data-markdown>
+								```javascript
+								function buildName(firstName: string, lastName?: string) {
+									if (lastName)
+										return firstName + " " + lastName;
+									else
+										return firstName;
+								}
+								```
+							</p>
+							<p class="fragment" data-fragment-index="2" data-markdown>
+								```javascript
+								let result1 = buildName("Bob");              // works correctly
+								let result2 = buildName("Bob", "Ady", "Sr.");// error
+								let result3 = buildName("Bob", "Ady");       // ah, just right
+								```
+							</p>
+					</section>
+				</section>
+				<section class="7" data-background="#05334b">
+					<section class="slide6.1">
+						<div>
+							<h2>Classes</h2>
+						</div>
+						<p class="fragment" data-fragment-index="1" data-markdown>
+							```javascript
+							class Greeter {
+								greeting: string;
+								constructor(message: string) {
+									this.greeting = message;
+								}
+								greet() {
+									return "Hello, " + this.greeting;
+								}
+							}
+							```
+						</p>
+						<p class="fragment" data-fragment-index="2" data-markdown>
+							```javascript
+								let greeter = new Greeter("world");
+							```
+						</p>
+					</section>
+					<section class="slide6.2">
+							<div>
+								<h3>Public modifiers</h3>
+								<p>We have freely access the members that we declared throughout our programs.In TypeScript, each member is <span style="color:red">public</span by default.</p>
+							</div>
+							<p class="fragment" data-fragment-index="1" data-markdown>
+								```javascript
+								class Animal {
+									name: string;
+									constructor(theName: string) { this.name = theName; }
+								}
+								```
+							</p>
+							<p class="fragment" data-fragment-index="2" data-markdown>
+								**The same:**
+								```javascript
+								class Animal {
+									public name: string;
+									public constructor(theName: string) { this.name = theName; }
+								}
+								```
+							</p>
+					</section>
+					<section class="slide6.2">
+							<div>
+								<h3>Private modifiers</h3>
+								<p>When a member is marked <span style="color:red">private</span>, it cannot be accessed from outside of its containing class.</p>
+							</div>
+							<p class="fragment" data-fragment-index="1" data-markdown>
+								```javascript
+								class Animal {
+									private name: string;
+									constructor(theName: string) { this.name = theName; }
+								}
+								```
+							</p>
+							<p class="fragment" data-fragment-index="2" data-markdown>
+								```javascript
+								new Animal("Cat").name; // Error: 'name' is private;
+								```
+							</p>
+					</section>
+					<section class="slide6.3">
+							<div>
+								<h3>Protected modifiers</h3>
+								<p>The <span style="color:red">protected</span> modifier acts much like the <span style="color:red">private</span> modifier with the exception that members declared <span style="color:red">protected</span> can also be accessed within deriving classes.</p>
+							</div>
+							<p class="fragment" data-fragment-index="1" data-markdown>
+								```javascript
+								class Person {
+									protected name: string;
+									constructor(name: string) { this.name = name; }
+								}
+								class Employee extends Person {
+									constructor(name: string) {
+										super(name);
+									}
+								}
+								```
+							</p>
+							<p class="fragment" data-fragment-index="2" data-markdown>
+								```javascript
+								let howard = new Employee("Howard");
+								console.log(howard.name); // error
+								```
+							</p>
+					</section>
+				</section>
+				<section class="slide7" data-background="#05334b">
+					<h2>Running TypeScript web app </h2>
+					<ul>
+						<li>Re-run tsc index.ts and you’ll see the generated JavaScript file index.js</li>
+						<li>Add index.js to &ltscript&gt tag</li>
+					</ul>
+				</section>
+				<section class="slide8" data-background="#05334b">
+						<h2>TypeScript pros</h2>
+						<ul>
+							<li>Provide a structuring mechanism for larger pieces of code</li>
+							<li>Make it easier to write correct and predictable code</li>
+							<li>Rich IDE support with autocomplete and code navigation features</li>
+							<li>Safe automatic refactorings</li>
+							<li>etc.</li>
+						</ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
